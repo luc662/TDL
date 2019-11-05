@@ -2,15 +2,12 @@ import std.stdio;
 import mapa.coordenada;
 import mapa.celda;
 import mapa.mapa;
-import mapa.colores.colorRojo;
+import std.container : DList;
+
 void main() {
 	writeln("Hello World.");
+	auto lista =DList!Coordenada();
 	Coordenada coordA= new Coordenada(1,1);
-	Celda celda =new Celda(coordA);
-	celda.imprimirColor();
-	ColorRojo rojo= new ColorRojo();
-	celda.pintar(rojo);
-	celda.imprimirColor();
-	Mapa mapa =new Mapa();
-	mapa.imprimir();
+	lista.insertFront(coordA);
+	lista.front.imprimir();
 }

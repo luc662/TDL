@@ -1,4 +1,4 @@
-import std.stdio;
+ import std.stdio;
 import std.conv;
 import std.math;
 import std.random;
@@ -15,24 +15,43 @@ import core.thread;
 import std.parallelism;
 import std.concurrency;
 import std.range;
+ 
+synchronized shared class Worker{
+     private int id;
+     private string mensaje;
+      this(int id){
+        this.id = id;
+        mensaje="iniciado";
+      }
+      shared void work(){
+        // Get thread id
+        writeln("Thread ", id, " starts");
+        Thread.sleep(id.seconds);
+        mensaje="trabajando";
+        writeln("Thread ", id, " ends");
+        Thread.sleep(id.seconds);
+        mensaje="finalizado";
+      }
+     shared  void print(){
+      	writeln(mensaje);
+      }
+ }
+ 
 
   
-static void f(string msg)
-{
-	writeln(msg);
-	Thread.sleep(3.seconds);
-    writeln(msg); // "Hello World"
-   
-}
-static void f2(string msg)
-{
-	Thread.sleep(4.seconds);
-    writeln(msg); // "Hello World"
 
+void foo() {
+    writeln("Hello");
+    Fiber.yield();
+    writeln("World");
+    Fiber.yield();
+    int valor=4;
+    Fiber.yield();
 }
-
-void main() { 
-	auto foo1=spawn(&f2, "bye World");
-	
-    auto foo2=spawn(&f, "Hello World");
+// ...
+void main(){
+	auto f = new Fiber(&foo);
+	f.call(); // Prints Hello
+	f.call(); // Prints World	
+	f.call(); // Prints World	
 }

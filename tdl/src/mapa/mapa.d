@@ -4,6 +4,7 @@ import mapa.colores.color;
 import mapa.coordenada;
 import mapa.colores.colorRojo;
 import mapa.colores.colorVerde;
+import jugador.ubicable.ubicable;
 import std.stdio;
 public class Mapa{
 	private Celda[Coordenada] mapa;
@@ -25,6 +26,9 @@ public class Mapa{
 			
 		}
 		writeln("tamanio:", mapa.length);
+	}
+	public void ubicar(Coordenada posicion, Ubicable elemento){
+		
 	}
 	
 }

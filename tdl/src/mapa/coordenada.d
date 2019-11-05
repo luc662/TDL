@@ -1,5 +1,6 @@
 module mapa.coordenada;
 import std.stdio;
+import mapa.CoordenadaInvalidaExepcion;
 public class Coordenada{
 	private size_t ejeX;
 	private size_t ejeY;
@@ -19,6 +20,19 @@ public class Coordenada{
 	public void imprimir(){
 		writeln('[',this.ejeX,',',this.ejeY,']');
 	}
-		
-	
+	public void sumarX(int valor){
+		if( ejeX+valor<0){
+			throw new CoordenadaInvalidaExepcion("las coordenadas son siempre positivas");
+		}
+		ejeX+=valor;
+	}
+		public void sumarY(int valor){
+		if( ejeY+valor<0){
+			throw new CoordenadaInvalidaExepcion("las coordenadas son siempre positivas");
+		}
+		ejeY+=valor;
+	}
+		public Coordenada copiar(){
+			return new Coordenada(ejeX,ejeY);
+		}
 }
