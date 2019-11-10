@@ -1,4 +1,5 @@
 module mapa.celda;
+
 import mapa.colores.color;
 import mapa.coordenada;
 import mapa.colores.colorRojo;
@@ -14,6 +15,7 @@ public class Celda{
 	public this(Coordenada coordenda) {
         this.coordenada=coordenada;
         color= new ColorVerde();
+        estado= new CeldaVacia();
     }
 	
 	public void pintar(Color color){
@@ -27,5 +29,8 @@ public class Celda{
 	}
 	public void vaciar(){
 		estado =new CeldaVacia();
+	}
+	public void imprimir(){
+		estado.imprimir();
 	}
 }

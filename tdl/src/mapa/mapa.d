@@ -8,8 +8,7 @@ import jugador.ubicable.ubicable;
 import std.stdio;
 public class Mapa{
 	private Celda[Coordenada] mapa;
-	
-	
+		
 	public this() {
         for(int i=0;i<20;i++){
 	        for(int j=0;j<20;j++){
@@ -19,16 +18,32 @@ public class Mapa{
 	        }	
         }
     }
-	public void imprimir(){
+	/*public void imprimir(){
 		foreach (Coordenada coord,Celda  cell; mapa) {
 			coord.imprimir();
 			cell.imprimirColor();
 			
 		}
 		writeln("tamanio:", mapa.length);
-	}
+	}*/
 	public void ubicar(Coordenada posicion, Ubicable elemento){
-		
+		Celda aux=mapa[posicion];
+		aux.ubicar(elemento);
+	}
+	public void vaciar(Coordenada posicion){
+		Celda aux=mapa[posicion];
+		aux.vaciar();
+	}
+	public void imprimir(){
+		for(int i=0;i<20;i++){
+	        for(int j=0;j<20;j++){
+	        	Coordenada coord= new Coordenada(j,i);
+	        	
+	        	auto aux=mapa[coord];
+	        	aux.imprimir();
+	        }
+	        writeln("");	
+        }	
 	}
 	
 }

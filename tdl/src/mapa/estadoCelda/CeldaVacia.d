@@ -9,5 +9,7 @@ import jugador.ubicable.ubicable;
 	 public EstadoCelda ubicar(Ubicable ubicable){
 	 	return new CeldaOcupada(ubicable);
 	 }
-	 
+	 public void imprimir(){
+	 	write("_");
+	 }
  }

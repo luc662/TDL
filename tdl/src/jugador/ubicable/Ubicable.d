@@ -4,7 +4,7 @@ import mapa.mapa;
 import mapa.coordenada;
 import std.stdio;
  public abstract class Ubicable{
-	 private Coordenada posicion;
+	 protected Coordenada posicion;
 	 this(Coordenada coordenada){
 	 	posicion=coordenada;
 	 }
@@ -12,8 +12,19 @@ import std.stdio;
 	 	mapa.ubicar(posicion, this);
 	 	
 	 }
-	 public void imprimir();
-	 public void mover(Mapa mapa, Coordenada coordenada){
-	 	//TODO
+	 public void vaciar(Mapa mapa){
+	 	mapa.vaciar(posicion);
+	 	
 	 }
+	 public void imprimir();
+	 
+	 public void mover(Mapa mapa, Coordenada coordenada){
+	 	mapa.ubicar(coordenada, this);
+	 	mapa.vaciar(posicion);
+	 	posicion=coordenada;
+	 }
+	 public Coordenada getPosicion(){
+	 	return posicion;
+	 }
+
  }

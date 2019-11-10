@@ -12,5 +12,8 @@ import mapa.estadoCelda.estadoCelda;
 	 public EstadoCelda ubicar(Ubicable ubicable){
 	 	throw new CeldaOcupadaException("celda ya ocupada");
 	 }
+	 public void imprimir(){
+	 	ubicable.imprimir();
+	 }
 	 
  }

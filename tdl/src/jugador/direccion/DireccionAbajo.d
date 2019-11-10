@@ -10,7 +10,7 @@ import jugador.direccion.direccionDerecha;
 	 
 	 public override Coordenada mover(Coordenada coordenadaPrevia){
 	 	Coordenada retorno= coordenadaPrevia.copiar();
-	 	retorno.sumarY(-1);
+	 	retorno.sumarY(1);
 	 	return retorno;
 	 }
 	 
