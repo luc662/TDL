@@ -1,6 +1,6 @@
 module mapa.coordenada;
 import std.stdio;
-import mapa.CoordenadaInvalidaExepcion;
+import mapa.CoordenadaInvalidaExeption;
 public class Coordenada{
 	private size_t ejeX;
 	private size_t ejeY;
@@ -22,13 +22,13 @@ public class Coordenada{
 	}
 	public void sumarX(int valor){
 		if( ejeX+valor<0){
-			throw new CoordenadaInvalidaExepcion("las coordenadas son siempre positivas");
+			throw new CoordenadaInvalidaExeption("las coordenadas son siempre positivas");
 		}
 		ejeX+=valor;
 	}
 		public void sumarY(int valor){
 		if( ejeY+valor<0){
-			throw new CoordenadaInvalidaExepcion("las coordenadas son siempre positivas");
+			throw new CoordenadaInvalidaExeption("las coordenadas son siempre positivas");
 		}
 		ejeY+=valor;
 	}

@@ -1,6 +1,5 @@
 import std.stdio;
 import mapa.coordenada;
-import mapa.celda;
 import mapa.mapa;
 import jugador.jugador;
 import std.container : DList;
@@ -21,6 +20,8 @@ int main() {
 	mapa.imprimir();
 	jugador.rotarAbajo();
 	
+	jugador.mover(mapa);
+	mapa.imprimir();
 	jugador.mover(mapa);
 	mapa.imprimir();
 	return 0;
