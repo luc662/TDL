@@ -1,6 +1,6 @@
 module mapa.coordenada;
 import std.stdio;
-import mapa.CoordenadaInvalidaExeption;
+import mapa.coordenadaInvalidaExeption;
 public class Coordenada{
 	private size_t ejeX;
 	private size_t ejeY;

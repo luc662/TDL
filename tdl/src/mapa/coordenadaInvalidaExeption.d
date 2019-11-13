@@ -1,4 +1,5 @@
-module mapa.CoordenadaInvalidaExeption;
+
+module mapa.coordenadaInvalidaExeption;
 import std.exception;
 
 public class CoordenadaInvalidaExeption : Exception{
