@@ -42,6 +42,9 @@ import std.algorithm;
 	 	cabeza.mover(mapa,nuevaPosCabeza);
 	 	nuevoCuerpo.ubicar(mapa);
 	 	cuerpo.insertFront(nuevoCuerpo);
+		 
+		direccionPrevia = direccion;
+		
 	 	return retorno;
 	 }
 	 //la lista por defecto no tiene un contar, ni un lenght de estos
