@@ -31,13 +31,16 @@ import std.algorithm;
 	 	Coordenada posCabezaVieja=cabeza.getPosicion();
 	 	Coordenada nuevaPosCabeza=direccion.mover(cabeza.getPosicion());
 	 	retorno.insertBack(nuevaPosCabeza);
-	 	retorno.insertBack(cabeza.getPosicion());
+	 	//retorno.insertBack(cabeza.getPosicion());
 	 	if(contarCuerpo()>=tamanio){
 	 		Cuerpo ultimo =cuerpo.back();
-	 		retorno.insertBack(ultimo.getPosicion());
+	 		//retorno.insertBack(ultimo.getPosicion());
 	 		ultimo.vaciar(mapa);
 	 		cuerpo.removeBack();
 	 	}
+	 	foreach (Cuerpo c; cuerpo) {
+		    retorno.insertBack(c.getPosicion());
+		}
 	 	Cuerpo nuevoCuerpo=new Cuerpo(posCabezaVieja);
 	 	cabeza.mover(mapa,nuevaPosCabeza);
 	 	nuevoCuerpo.ubicar(mapa);
