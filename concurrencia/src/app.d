@@ -4,12 +4,6 @@ import core.atomic : atomicOp, atomicLoad;
 import core.thread;
 import std.stdio;
 
-/*
-Queue that can be used safely among
-different threads. All access to an
-instance is automatically locked thanks to
-synchronized keyword.
-*/
 synchronized class SafeQueue(T)
 {
     // Note: must be private in synchronized
@@ -44,11 +38,13 @@ void safePrint(T...)(T args)
     // Just executed by one concurrently
     synchronized {
         import std.stdio : writeln;
-        writeln(args);
+        writeln(args);	
     }
+ 
+    
 }
 
-void threadProducer(shared(SafeQueue!int) queue,
+void threadProducer(Tid owner,shared(SafeQueue!int) queue,
     shared(int)* queueCounter,int productor)
 {
     import std.range : iota;
@@ -57,10 +53,10 @@ void threadProducer(shared(SafeQueue!int) queue,
         queue.push(i);
         safePrint("Pushed ", i," producido por:",productor);
         atomicOp!"+="(*queueCounter, 1);
-        Thread.sleep(2.seconds);
+        Thread.sleep(2000.msecs);
         
     }
-    
+    owner.send(true);
 }
 
 void threadConsumer(Tid owner,
@@ -89,8 +85,8 @@ void main()
 {
     auto queue = new shared(SafeQueue!int);
     shared int counter = 0;
-    spawn(&threadProducer, queue, &counter,1);
-    spawn(&threadProducer, queue, &counter,2);
+    spawn(&threadProducer,thisTid, queue, &counter,1);
+    spawn(&threadProducer,thisTid, queue, &counter,2);
     auto consumer1 = spawn(&threadConsumer,
                     thisTid, queue, &counter,4);
     auto consumer2 = spawn(&threadConsumer,
