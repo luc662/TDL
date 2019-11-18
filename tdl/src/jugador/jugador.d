@@ -38,14 +38,15 @@ import std.algorithm;
 	 		ultimo.vaciar(mapa);
 	 		cuerpo.removeBack();
 	 	}
-	 	foreach (Cuerpo c; cuerpo) {
-		    retorno.insertBack(c.getPosicion());
-		}
+
 	 	Cuerpo nuevoCuerpo=new Cuerpo(posCabezaVieja);
 	 	cabeza.mover(mapa,nuevaPosCabeza);
 	 	nuevoCuerpo.ubicar(mapa);
+	 	
 	 	cuerpo.insertFront(nuevoCuerpo);
-		 
+		foreach (Cuerpo c; cuerpo) {
+		    retorno.insertBack(c.getPosicion());
+		} 
 		direccionPrevia = direccion;
 		
 	 	return retorno;
