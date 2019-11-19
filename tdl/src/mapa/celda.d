@@ -33,4 +33,11 @@ public class Celda{
 	public void imprimir(){
 		estado.imprimir();
 	}
+	
+	
+	//devuelve 'true' si la celda esta en estado 'vacio'
+	public bool estaVacia(){
+		
+		return estado.esVacio();
+	}
 }

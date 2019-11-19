@@ -16,4 +16,8 @@ import mapa.estadoCelda.estadoCelda;
 	 	ubicable.imprimir();
 	 }
 	 
+	 public bool esVacio(){
+	 	
+	 	return false;
+	 }
  }

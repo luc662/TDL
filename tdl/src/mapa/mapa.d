@@ -46,4 +46,13 @@ public class Mapa{
         }	
 	}
 	
+	// devuelve 'true' si la celda correspondiente a la posicionBuscada
+	// esta vacia
+	public bool estaVacia(Coordenada posicionBuscada){
+		
+		auto celdaBuscada = this.mapa[posicionBuscada];
+		
+		return celdaBuscada.estaVacia(); 
+	}
+	
 }

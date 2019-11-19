@@ -12,4 +12,9 @@ import jugador.ubicable.ubicable;
 	 public void imprimir(){
 	 	write("_");
 	 }
+	 
+	 public bool esVacio(){
+	 	
+	 	return true; 
+	 }
  }

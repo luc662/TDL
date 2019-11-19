@@ -8,4 +8,6 @@ import jugador.ubicable.ubicable;
 	 public EstadoCelda ubicar(Ubicable ubicable);
 	 
 	 public void imprimir();
+	 
+	 public bool esVacio();
  }

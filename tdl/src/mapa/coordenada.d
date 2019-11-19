@@ -42,4 +42,16 @@ public class Coordenada{
 		public int obtenerY(){
 			return cast(int)this.ejeY;
 		}
+		
+		
+		// recibe dos valores (x e Y) y si son >0 entonces reemplaza
+		// los actuales con esos.
+		public void cambiarPosiciones(size_t valorX , size_t valorY){
+			if(valorX < 0 || valorY <0){
+				
+				throw new CoordenadaInvalidaException("las coordenadas son siempre positivas");
+			}
+			this.ejeX = valorX;
+			this.ejeY = valorY;	
+		}
 }
