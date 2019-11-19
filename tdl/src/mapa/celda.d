@@ -40,4 +40,9 @@ public class Celda{
 		
 		return estado.esVacio();
 	}
+	
+	public bool tieneComida(){
+		
+		return estado.tieneComida();
+	}
 }

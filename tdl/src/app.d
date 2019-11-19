@@ -10,21 +10,21 @@ int main() {
 	Delivery delivery = new Delivery(mapa);
 	
 	mapa.imprimir();
-	jugador.mover(mapa);
+	jugador.mover(mapa , delivery);
 	mapa.imprimir();
-	jugador.mover(mapa);
+	jugador.mover(mapa , delivery);
 	mapa.imprimir();
-	jugador.mover(mapa);
+	jugador.mover(mapa , delivery);
 	mapa.imprimir();
-	jugador.mover(mapa);
+	jugador.mover(mapa , delivery);
 	mapa.imprimir();
-	jugador.mover(mapa);
+	jugador.mover(mapa , delivery);
 	mapa.imprimir();
 	jugador.rotarAbajo();
 	
-	jugador.mover(mapa);
+	jugador.mover(mapa , delivery);
 	mapa.imprimir();
-	jugador.mover(mapa);
+	jugador.mover(mapa , delivery);
 	mapa.imprimir();
 	return 0;
 }

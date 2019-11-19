@@ -20,4 +20,9 @@ import mapa.estadoCelda.estadoCelda;
 	 	
 	 	return false;
 	 }
+	 
+	 public bool tieneComida(){
+	 	
+	 	return this.ubicable.esComida();
+	 }
  }

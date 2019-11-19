@@ -18,4 +18,9 @@ public class Comida : Ubicable {
 		
 		write("F");
 	}
+	
+	override public bool esComida(){
+		
+		return true;
+	}
 }

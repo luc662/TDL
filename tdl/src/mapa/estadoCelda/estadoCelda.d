@@ -10,4 +10,6 @@ import jugador.ubicable.ubicable;
 	 public void imprimir();
 	 
 	 public bool esVacio();
+	 
+	 public bool tieneComida();
  }

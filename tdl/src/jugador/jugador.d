@@ -10,6 +10,7 @@ import jugador.direccion.direccionArriba;
 import jugador.direccion.direccionAbajo;
 import jugador.ubicable.cabeza;
 import jugador.ubicable.cuerpo;
+import jugador.delivery;
 import std.range;
 import mapa.coordenada;
 import std.algorithm;
@@ -26,11 +27,20 @@ import std.algorithm;
 	 	direccionPrevia= new DireccionDerecha();
 	 	cabeza.ubicar(mapa);
 	 }
-	 public DList!Coordenada mover(Mapa mapa){
+	 public DList!Coordenada mover(Mapa mapa, Delivery delivery){
 	 	DList!Coordenada retorno;
 	 	Coordenada posCabezaVieja=cabeza.getPosicion();
 	 	Coordenada nuevaPosCabeza=direccion.mover(cabeza.getPosicion());
 	 	retorno.insertBack(nuevaPosCabeza);
+
+//---- esta parte es la que funcionari como el "comer"----	 	
+	 	if( mapa.tieneComidaEn(nuevaPosCabeza) ){
+	 		this.tamanio++;
+	 		mapa.vaciar(nuevaPosCabeza);
+	 		delivery.entregarComida(mapa);
+	 	}
+//-------------------------------------------------------- 	
+	 	
 	 	//retorno.insertBack(cabeza.getPosicion());
 	 	if(contarCuerpo()>=tamanio){
 	 		Cuerpo ultimo =cuerpo.back();
@@ -40,6 +50,7 @@ import std.algorithm;
 	 	}
 
 	 	Cuerpo nuevoCuerpo=new Cuerpo(posCabezaVieja);
+	 	
 	 	cabeza.mover(mapa,nuevaPosCabeza);
 	 	nuevoCuerpo.ubicar(mapa);
 	 	

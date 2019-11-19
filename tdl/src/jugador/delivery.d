@@ -24,9 +24,9 @@ public class Delivery {
 	this(Mapa mapa){
 		
 		Coordenada destinoInicial = this.obtenerDestino(mapa);
-		this.comida = new Comida(destinoInicial); 
+		this.comida = new Comida(destinoInicial);
 		
-		this.entregarComida(mapa);
+		mapa.ubicar(destinoInicial, this.comida);
 	}
 	
 	/*

@@ -55,4 +55,10 @@ public class Mapa{
 		return celdaBuscada.estaVacia(); 
 	}
 	
+	public bool tieneComidaEn(Coordenada posicionBuscada){
+		
+		Celda celdaBuscada = this.mapa[posicionBuscada];
+		
+		return celdaBuscada.tieneComida();
+	}
 }

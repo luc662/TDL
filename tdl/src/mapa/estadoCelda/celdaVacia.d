@@ -17,4 +17,9 @@ import jugador.ubicable.ubicable;
 	 	
 	 	return true; 
 	 }
+	 
+	 public bool tieneComida(){
+	 	
+	 	return false;
+	 }
  }

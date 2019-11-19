@@ -26,5 +26,10 @@ import std.stdio;
 	 public Coordenada getPosicion(){
 	 	return posicion;
 	 }
+	 
+	 public bool esComida(){
+	 	
+	 	return false;
+	 }
 
  }
