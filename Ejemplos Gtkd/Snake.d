@@ -61,8 +61,10 @@ class IniciarSnakeButton : Button{
 }
 
 
-
 void main(string[] args){
+  
+  try
+{
     Main.init(args);
     MainWindow ventanaMenu = new MainWindow("Snake Menu");
     ventanaMenu.setDefaultSize(400, 400);
@@ -85,6 +87,12 @@ void main(string[] args){
 	ventanaMenu.showAll();
     Main.run();
 }
+catch (Exception e)
+{
+    writeln("Game Over!");
+}
+
+}
 
 
 public class Tablero: DrawingArea{
@@ -104,8 +112,8 @@ public class Tablero: DrawingArea{
 	bool drawCallBack(Scoped!Context cr, Widget widget){
 		cr.setSourceRgb(0.0,0.0,0.0);
 		cr.paint();
-		cr.setSourceRgb(12.0,12.0,12.0);
-		//separador
+		
+		/*separador
 		cr.setLineWidth(1);
 			for(int i = 1;i<501;i+=20){
 				cr.moveTo(1,i);
@@ -117,18 +125,19 @@ public class Tablero: DrawingArea{
 				cr.lineTo(i,500);
 				cr.stroke();
 			}
-		//fin separador
+			fin separador
+		*/
 		if (m_timeout is null )
-			m_timeout = new Timeout(400, &redraw,false);
+			m_timeout = new Timeout(200, &redraw,false);
 			
 		auto coordenadasAMostrar = this.jugador.mover(this.mapa,this.delivery);
 		foreach(corrdenadaActual; coordenadasAMostrar){
 			cr.setSourceRgb(12.3,12.4,12.5);
 			cr.rectangle(corrdenadaActual.obtenerX()*20,corrdenadaActual.obtenerY()*20,20,20);
-			
+			cr.fill();
 		}
 		auto coordenadaDeComida = this.mapa.getDireccionComida();
-		cr.setSourceRgb(12.3,12.4,12.5);
+		cr.setSourceRgb(255,170,0);
 		cr.rectangle(coordenadaDeComida.obtenerX()*20,coordenadaDeComida.obtenerY()*20,20,20);
 		cr.fill();
 		return true;
@@ -143,10 +152,10 @@ public class Tablero: DrawingArea{
 	
 	private bool controladorDeTecla(GdkEventKey* ev, Widget widget){
 	bool retorno = false;
-    if(ev.keyval == 119){ //w
+    if(ev.keyval == 119){ //W
 		this.jugador.rotarArriba();
         retorno = true; 
-    }else if(ev.keyval == 97){ //a
+    }else if(ev.keyval == 97){ //A
 		this.jugador.rotarIzquierda();
 		retorno = true;
 	}
@@ -168,8 +177,5 @@ public class Tablero: DrawingArea{
 		return &controladorDeTecla;
 	}
 }
-
-
-
 
 //dmd Snake.d -L+gtkd.lib mapa\mapa.d mapa\coordenadaInvalidaException.d mapa\celda.d mapa\coordenada.d  mapa\estadoCelda\celdaOcupada.d mapa\estadoCelda\celdaOcupadaException.d mapa\estadoCelda\celdaVacia.d mapa\estadoCelda\celdaVaciaException.d mapa\estadoCelda\estadoCelda.d mapa\colores\color.d mapa\colores\colorRojo.d mapa\colores\colorVerde.d jugador\jugador.d jugador\delivery.d jugador\comida.d jugador\direccion\direccion.d jugador\direccion\direccionAbajo.d jugador\direccion\direccionArriba.d jugador\direccion\direccionDerecha.d jugador\direccion\direccionIzquierda.d jugador\ubicable\cabeza.d jugador\ubicable\cuerpo.d jugador\ubicable\ubicable.d
