@@ -1,9 +1,6 @@
 module mapa.mapa;
 import mapa.celda;
-import mapa.colores.color;
 import mapa.coordenada;
-import mapa.colores.colorRojo;
-import mapa.colores.colorVerde;
 import jugador.ubicable.ubicable;
 import std.stdio;
 
@@ -23,14 +20,7 @@ public class Mapa{
         //como todavia no se puso la comida, inicializo en 0,0
         this.direccionComida = new Coordenada(0,0);
     }
-	/*public void imprimir(){
-		foreach (Coordenada coord,Celda  cell; mapa) {
-			coord.imprimir();
-			cell.imprimirColor();
-			
-		}
-		writeln("tamanio:", mapa.length);
-	}*/
+
 	public void ubicar(Coordenada posicion, Ubicable elemento){
 		Celda aux=mapa[posicion];
 		aux.ubicar(elemento);

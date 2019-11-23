@@ -1,0 +1,6 @@
+{
+	"name" : "ejemplo_concurrencia_1",
+	"description" : "Hello World - A minimal DUB bundle.",
+	"dependencies" : {
+	}
+}

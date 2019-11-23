@@ -1,0 +1,6 @@
+{
+	"name" : "ejemplo_parallel",
+	"description" : "Hello World - A minimal DUB bundle.",
+	"dependencies" : {
+	}
+}
