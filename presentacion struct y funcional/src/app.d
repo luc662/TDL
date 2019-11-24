@@ -4,10 +4,10 @@ struct Foo{
 	 int a;
 	 int b;
 }
-public void imprimir(Foo foo) pure{
-	//debug es necesario para hacer writeln pure
+public void imprimir(Foo foo) {
+	
 	foo.b=28;
-	debug writeln("a es:",foo.a ," b es:",foo.b);
+	writeln("a es:",foo.a ," b es:",foo.b);
 }
 
 void main() {
