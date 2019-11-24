@@ -14,7 +14,8 @@ import jugador.delivery;
 import std.range;
 import mapa.coordenada;
 import std.algorithm;
- public class Jugador{
+
+public class Jugador{
 	 private int tamanio;
 	 private Cabeza cabeza;
 	 private DList!Cuerpo cuerpo;
@@ -36,40 +37,42 @@ import std.algorithm;
 	 	DList!Coordenada retorno;
 	 	Coordenada posCabezaVieja=cabeza.getPosicion();
 	 	try{
-	 	Coordenada nuevaPosCabeza=direccion.mover(cabeza.getPosicion());
-	 	retorno.insertBack(nuevaPosCabeza);
-
-//---- esta parte es la que funcionari como el "comer"----	 	
-	 	if( mapa.tieneComidaEn(nuevaPosCabeza) ){
-	 		this.tamanio++;
-	 		mapa.vaciar(nuevaPosCabeza);
-	 		delivery.entregarComida(mapa);
-	 	}
-//-------------------------------------------------------- 	
+		 	Coordenada nuevaPosCabeza=direccion.mover(cabeza.getPosicion());
+		 	retorno.insertBack(nuevaPosCabeza);
+		 	
+			//---- esta parte es la que funcionari como el "comer"----	 	
+		 	if( mapa.tieneComidaEn(nuevaPosCabeza) ){
+		 		this.tamanio++;
+		 		mapa.vaciar(nuevaPosCabeza);
+		 		delivery.entregarComida(mapa);
+		 	}
+			//-------------------------------------------------------- 	
 	 	
-	 	//retorno.insertBack(cabeza.getPosicion());
-	 	if(contarCuerpo()>=tamanio){
-	 		Cuerpo ultimo =cuerpo.back();
-	 		//retorno.insertBack(ultimo.getPosicion());
-	 		ultimo.vaciar(mapa);
-	 		cuerpo.removeBack();
-	 	}
-
-	 	Cuerpo nuevoCuerpo=new Cuerpo(posCabezaVieja);
+		 	//retorno.insertBack(cabeza.getPosicion());
+		 	if(contarCuerpo()>=tamanio){
+		 		Cuerpo ultimo =cuerpo.back();
+		 		//retorno.insertBack(ultimo.getPosicion());
+		 		ultimo.vaciar(mapa);
+		 		cuerpo.removeBack();
+		 	}
+	
+		 	Cuerpo nuevoCuerpo=new Cuerpo(posCabezaVieja);
 	 	
-	 	cabeza.mover(mapa,nuevaPosCabeza);
-	 	nuevoCuerpo.ubicar(mapa);
+		 	cabeza.mover(mapa,nuevaPosCabeza);
+		 	nuevoCuerpo.ubicar(mapa);
 	 	
-	 	cuerpo.insertFront(nuevoCuerpo);
-		foreach (Cuerpo c; cuerpo) {
-		    retorno.insertBack(c.getPosicion());
-		} 
-		direccionPrevia = direccion;
-	 	} catch (Exception e){
-	 		this.estaConVida = false;
-	 	}
+		 	cuerpo.insertFront(nuevoCuerpo);
+			foreach (Cuerpo c; cuerpo) {
+			    retorno.insertBack(c.getPosicion());
+			} 
+			direccionPrevia = direccion;
+			
+		 	} catch (Exception e){
+		 		this.estaConVida = false;
+		 	}
 	 	return retorno;
 	 }
+	 
 	 //la lista por defecto no tiene un contar, ni un lenght de estos
 	 private int contarCuerpo(){
 	 	int i=0;
@@ -102,4 +105,44 @@ import std.algorithm;
 		
 		return this.estaConVida;
 	}
+	
+	
+		public DList!Coordenada mover( Mapa mapa ){
+	 	DList!Coordenada retorno;
+	 	Coordenada posCabezaVieja=cabeza.getPosicion();
+	 	try{
+		 	Coordenada nuevaPosCabeza=direccion.mover(cabeza.getPosicion());
+		 	retorno.insertBack(nuevaPosCabeza);
+
+			//---- esta parte es la Diferencia con el otro mover ((el que recibe delivery))----	 	
+		
+			this.tamanio++;
+			//-------------------------------------------------------- 	
+	 	
+		 	//retorno.insertBack(cabeza.getPosicion());
+		 	if(contarCuerpo()>=tamanio){
+		 		Cuerpo ultimo =cuerpo.back();
+		 		//retorno.insertBack(ultimo.getPosicion());
+		 		ultimo.vaciar(mapa);
+		 		cuerpo.removeBack();
+		 	}
+
+		 	Cuerpo nuevoCuerpo=new Cuerpo(posCabezaVieja);
+	 	
+		 	cabeza.mover(mapa,nuevaPosCabeza);
+		 	nuevoCuerpo.ubicar(mapa);
+	 	
+		 	cuerpo.insertFront(nuevoCuerpo);
+			foreach (Cuerpo c; cuerpo) {
+			    retorno.insertBack(c.getPosicion());
+			} 
+			direccionPrevia = direccion;
+			
+		 	} catch (Exception e){
+		 		this.estaConVida = false;
+		 	}
+		 	
+	 	return retorno;
+	 }
+	
  }

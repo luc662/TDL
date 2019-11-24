@@ -11,33 +11,17 @@ int main() {
 	
 	mapa.imprimir();
 	
-	jugador.mover(mapa, delivery);
-	mapa.imprimir();	
-	jugador.mover(mapa, delivery);
-	mapa.imprimir();
+//----prueba para el jugador.mover que no necesita delivery-----
+	while( jugador.estaVivo() ){
 		
-	jugador.rotarAbajo();
-	jugador.mover(mapa, delivery);
-	mapa.imprimir();
-	
-	jugador.rotarIzquierda();
-	jugador.mover(mapa, delivery);
-	mapa.imprimir();
-	
-	jugador.rotarArriba();
-	jugador.mover(mapa, delivery);
-	writeln(jugador.estaVivo());	
-	mapa.imprimir();
-	
-	jugador.mover(mapa, delivery);
-	mapa.imprimir();
-	
-	writeln(jugador.estaVivo());
-//	while( jugador.estaVivo() ){
-//		
-//		jugador.mover(mapa , delivery);
-//		mapa.imprimir();
-//	}
+		jugador.mover(mapa);
+		mapa.imprimir();
+	}
+	writeln( jugador.estaVivo() );
+
+//--------estas pruebas eran para el snake-----
+
+
 //	jugador.mover(mapa , delivery);
 //	mapa.imprimir();
 //	jugador.mover(mapa , delivery);
