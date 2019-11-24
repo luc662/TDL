@@ -20,16 +20,22 @@ import std.algorithm;
 	 private DList!Cuerpo cuerpo;
 	 private Direccion direccion;
 	 private Direccion direccionPrevia;
+	 
+	 private bool estaConVida;
+	 
 	 this(Mapa mapa){
 	 	tamanio=5;
 	 	cabeza=new Cabeza(new Coordenada(3,3));
 	 	direccion=new DireccionDerecha();
 	 	direccionPrevia= new DireccionDerecha();
 	 	cabeza.ubicar(mapa);
+	 	
+	 	this.estaConVida = true;
 	 }
 	 public DList!Coordenada mover(Mapa mapa, Delivery delivery){
 	 	DList!Coordenada retorno;
 	 	Coordenada posCabezaVieja=cabeza.getPosicion();
+	 	try{
 	 	Coordenada nuevaPosCabeza=direccion.mover(cabeza.getPosicion());
 	 	retorno.insertBack(nuevaPosCabeza);
 
@@ -59,7 +65,9 @@ import std.algorithm;
 		    retorno.insertBack(c.getPosicion());
 		} 
 		direccionPrevia = direccion;
-		
+	 	} catch (Exception e){
+	 		this.estaConVida = false;
+	 	}
 	 	return retorno;
 	 }
 	 //la lista por defecto no tiene un contar, ni un lenght de estos
@@ -88,5 +96,10 @@ import std.algorithm;
 	 }	
 	public void printsize(){
 		writeln("longitud del cuerpo:", contarCuerpo());
+	}
+	
+	public bool estaVivo(){
+		
+		return this.estaConVida;
 	}
  }

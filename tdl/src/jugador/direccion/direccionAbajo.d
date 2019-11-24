@@ -6,11 +6,23 @@ import jugador.direccion.direccion;
 import jugador.direccion.direccionIzquierda;
 import jugador.direccion.direccionArriba;
 import jugador.direccion.direccionDerecha;
+
+import jugador.direccion.AvanzoFueraDeRangoException;
+
  class DireccionAbajo :Direccion{
 	 
 	 public override Coordenada mover(Coordenada coordenadaPrevia){
 	 	Coordenada retorno= coordenadaPrevia.copiar();
-	 	retorno.sumarY(1);
+	 	int coordY = retorno.obtenerY();
+	 	
+	 	if(coordY < 19){
+		 	
+		 	retorno.sumarY(1);
+		 } else {
+		 	
+		 	throw new AvanzoFueraDeRangoException("trate de avanzar fuera de rango");
+		 }
+	 	
 	 	return retorno;
 	 }
 	 

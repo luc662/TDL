@@ -8,7 +8,7 @@ import mapa.estadoCelda.celdaVacia;
 import jugador.ubicable.ubicable;
 
 public class Celda{
-	private Coordenada coordenada;private Color color;//solo para testear algo
+	private Coordenada coordenada;
 	private EstadoCelda estado;
 	public this(Coordenada coordenda) {
         this.coordenada=coordenada;
