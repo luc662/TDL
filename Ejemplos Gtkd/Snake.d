@@ -80,7 +80,7 @@ class IniciarSnakeButton : Button{
 
 public VBox crearMenu(MainWindow ventanaMenu, string nombreBoton){
 	MenuBar menuBar = new MenuBar();
-    MenuItem fileMenuItem = new MenuItem("Menu");
+    	MenuItem fileMenuItem = new MenuItem("Menu");
 	menuBar.append(fileMenuItem);
  
     VBox vb = new VBox(false, 10);
@@ -135,6 +135,7 @@ public class Tablero: DrawingArea{
 		this.jugador = new Jugador(this.mapa);
 		this.delivery = new Delivery(this.mapa);
 		this.ventanaActual = ventanaActual;
+		this.imagen = ImageSurface.createFromPng("C:\\D\\GtkdMaster\\generated\\gtkd\\SnakeBG.png ");
 		addOnDraw(&drawCallBack);
 	}
 	
@@ -147,7 +148,7 @@ public class Tablero: DrawingArea{
 	bool drawCallBack(Scoped!Context cr, Widget widget){
 		
 		bool retorno = false;
-		this.imagen = ImageSurface.createFromPng("C:\\D\\GtkdMaster\\generated\\gtkd\\SnakeBG.png ");
+		
 		
 		if(this.jugador.estaVivo()){
 		//cr.setSourceRgb(0.0,0.0,0.0);  Fondo negro
