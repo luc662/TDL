@@ -123,7 +123,7 @@ public class Tablero: DrawingArea{
 	Jugador jugador;
 	Delivery delivery;
 	MainWindow ventanaActual;
-	int velocidad = 200;
+	int velocidad = 100;
 	
 	this(MainWindow ventanaActual){
 		this.mapa= new Mapa();
@@ -165,7 +165,7 @@ public class Tablero: DrawingArea{
 		else{
 				this.ventanaActual.close();
 				this.ventanaActual = new MainWindow("Game Over Menu");
-				this.ventanaActual.add(crearMenu(this.ventanaActual, "Voler a jugar"));
+				this.ventanaActual.add(crearMenu(this.ventanaActual, "Volver a jugar"));
 				this.ventanaActual.setDefaultSize(400, 400);
 				this.ventanaActual.showAll();
 				retorno = true;
