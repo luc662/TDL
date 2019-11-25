@@ -6,7 +6,7 @@ void f(string msg){
     writeln(msg);
     writeln("thread id: ", thisTid);
     Thread.sleep(5.seconds);
-    wruteln("fin de thread");
+    writeln("fin de thread");
 }
 
 void main() {
