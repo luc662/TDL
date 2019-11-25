@@ -135,9 +135,7 @@ public class Tablero: DrawingArea{
 		this.jugadorDos = new Jugador(this.mapa, true);
 		this.delivery = new Delivery(this.mapa);
 		this.ventanaActual = ventanaActual;
-		
 		this.imagen = ImageSurface.createFromPng("C:\\D\\GtkdMaster\\generated\\gtkd\\TronBG.png ");
-		
 		addOnDraw(&drawCallBack);
 	}
 	
