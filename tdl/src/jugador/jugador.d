@@ -33,6 +33,16 @@ public class Jugador{
 	 	
 	 	this.estaConVida = true;
 	 }
+	
+	 this(Mapa mapa ,bool jugador){
+		tamanio=5;
+	 	cabeza=new Cabeza(new Coordenada(15,15));
+	 	direccion=new DireccionIzquierda();
+	 	direccionPrevia= new DireccionIzquierda();
+	 	cabeza.ubicar(mapa);
+	 	this.estaConVida = true;
+	 }
+	 
 	 public DList!Coordenada mover(Mapa mapa, Delivery delivery){
 	 	DList!Coordenada retorno;
 	 	Coordenada posCabezaVieja=cabeza.getPosicion();
