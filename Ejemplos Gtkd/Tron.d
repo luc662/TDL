@@ -23,6 +23,9 @@ import jugador.delivery;
 import jugador.comida;
 import std.container : DList;
 
+import cairo.Surface;
+import cairo.ImageSurface;
+
 class QuitButton : Button{
     this(in string text){
         super(text);
@@ -124,12 +127,17 @@ public class Tablero: DrawingArea{
 	MainWindow ventanaActual;
 	int velocidad = 120;
 	
+	Surface imagen;
+	
 	this(MainWindow ventanaActual){
 		this.mapa= new Mapa();
 		this.jugador = new Jugador(this.mapa);
 		this.jugadorDos = new Jugador(this.mapa, true);
 		this.delivery = new Delivery(this.mapa);
 		this.ventanaActual = ventanaActual;
+		
+		this.imagen = ImageSurface.createFromPng("C:\\D\\GtkdMaster\\generated\\gtkd\\TronBG.png ");
+		
 		addOnDraw(&drawCallBack);
 	}
 	
@@ -143,7 +151,8 @@ public class Tablero: DrawingArea{
 		
 		bool retorno = false;
 		if(this.jugador.estaVivo() &&  this.jugadorDos.estaVivo() ) {
-		cr.setSourceRgb(0.0,0.0,0.0);
+		//cr.setSourceRgb(0.0,0.0,0.0); fondo negro
+		cr.setSourceSurface(this.imagen,0,0);
 		cr.paint();
 		
 		if (m_timeout is null )
