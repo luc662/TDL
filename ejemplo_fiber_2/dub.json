@@ -1,0 +1,6 @@
+{
+	"name" : "ejemplo_fiber_2",
+	"description" : "Hello World - A minimal DUB bundle.",
+	"dependencies" : {
+	}
+}
